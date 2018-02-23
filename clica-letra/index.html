@@ -17,29 +17,20 @@
 				margin: 20px 0px 20px 0px;
 			}
 
-			.alert {
-				margin-top: 30px;
-			}
-
 			.acoes {
-				margin-top: 50px;
 				text-align: center;
+				margin-top: 70px;
 			}
 
-			.btn-dark {
+			.btn {
 				padding: 20px 50px 20px 50px;
 				font-size: 30px;
 			}
 
-			.btn-success {
-				padding: 20px 50px 20px 50px;
-				font-size: 30px;
-				margin-left: 20px;
-			}
-
-			div.alfabeto {
+			.alfabeto {
 				text-align: center;
 				margin-top: 30px;
+				width: 80%;
 			}
 
 			div.alfabeto .col {
@@ -49,6 +40,10 @@
 			div.col img {
 				width: 64px;
 				height: 64px;
+			}
+
+			.letra {
+				margin: 10px 10px 10px 10px;
 			}
 		</style>
 	</head>
@@ -77,8 +72,6 @@
 				<div class="col">
 					<img id="g" class="letra" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==">
 				</div>
-			</div>
-			<div class="row">
 				<div class="col">
 					<img id="h" class="letra" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==">
 				</div>
@@ -100,8 +93,6 @@
 				<div class="col">
 					<img id="n" class="letra" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==">
 				</div>
-			</div>
-			<div class="row">
 				<div class="col">
 					<img id="o" class="letra" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==">
 				</div>
@@ -123,8 +114,6 @@
 				<div class="col">
 					<img id="u" class="letra" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==">
 				</div>
-			</div>
-			<div class="row">
 				<div class="col">
 					<img id="v" class="letra" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==">
 				</div>
@@ -144,8 +133,14 @@
 		</div>
 
 		<div class="container acoes">
-			<button type="button" class="btn btn-dark" id="btnProximaLetra">NOME DA LETRA</button>
-			<button type="button" class="btn btn-success" id="btnPontuacao" disabled="true"></button>
+			<div class="row">
+				<div class="col">
+					<button type="button" class="btn btn-dark" id="btnProximaLetra">NOME DA LETRA</button>
+				</div>
+				<div class="col">
+					<button type="button" class="btn btn-success" id="btnPontuacao" disabled="true"></button>
+				</div>
+			</div>
 		</div>
 
 		<audio src="sounds/errou.mp3" id="som-errou"></audio>
