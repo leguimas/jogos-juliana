@@ -1,3 +1,3 @@
 # jogos-juliana
 
-jogos simples criados para auxiliar o processo de alfabetização
+jogos simples criados para auxiliar o processo de alfabetizaÃ§Ã£o
