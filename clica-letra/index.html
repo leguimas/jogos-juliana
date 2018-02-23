@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 		<link rel="icon" href="images/icon.png">
-		<title>..:: Clica Letras ::..</title>
+		<title>..:: Clica Letra ::..</title>
 
 		<style>
 
@@ -140,15 +140,8 @@
 				<button type="button" class="btn btn-dark" id="btnProximaLetra">NOME DA LETRA</button>
 			</div>
 
-			<div class="alert alert-success" role="alert">
-				<h4 class="alert-heading">Parabéns!</h4>
-				<p>Você clicou na letra certa! Clique no botão para escutar o som de uma nova letra.</p>
-			</div>
-
-			<div class="alert alert-danger" role="alert">
-				<h4 class="alert-heading">Ah, não!</h4>
-				<p>Essa não é a letra correta! Clique no botão para escutar o som novamente..</p>
-			</div>
+			 <audio src="sounds/errou.mp3" id="som-errou"></audio>
+			 <audio src="sounds/acertou.mp3" id="som-acertou"></audio>
 		</div>
 
 		<!-- Optional JavaScript -->
@@ -162,13 +155,26 @@
 			var proximaLetra = null;
 			var acertou = true;
 			var somDaLetra = null;
+			var somAcertou = null;
+			var somErrou = null;
+
+			function sleep(ms) {
+				return new Promise(resolve => setTimeout(resolve, ms));
+			}
 
 			$( document ).ready(function() {
-				$(".alert-success").hide();
-				$(".alert-danger").hide();
-
 				$(".letra").each(function() {
 					$(this).attr("src", "images/" + $(this).attr('id') + ".png");
+				});
+
+				somAcertou = document.getElementById('som-acertou');
+				somAcertou.addEventListener('ended', function(){
+					$("#btnProximaLetra").click();
+				});
+
+				somErrou = document.getElementById('som-errou');
+				somErrou.addEventListener('ended', function(){
+					$("#btnProximaLetra").click();
 				});
 
 				$("#btnProximaLetra").click();
@@ -179,20 +185,17 @@
 				acertou = (letraClicada == proximaLetra);
 
 				if (acertou) {
-					$(".alert-success").show();
-					$(".alert-danger").hide();
+					somAcertou.play();
+					setTimeout($("#btnProximaLetra").click, 1000);
 				} else {
-					$(".alert-success").hide();
-					$(".alert-danger").show();
+					somErrou.play();
+					setTimeout($("#btnProximaLetra").click, 2000);
 				}
 
-				$("#btnProximaLetra").click();
+
 			});
 
 			$("#btnProximaLetra").click(function() {
-				$(".alert-success").hide();
-				$(".alert-danger").hide();
-
 				if (acertou) {
 					proximaLetra = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 					somDaLetra = new Audio("sounds/" + proximaLetra + ".mp3");
